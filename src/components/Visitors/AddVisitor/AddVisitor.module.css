@@ -1,0 +1,6 @@
+.addVisitor {
+    margin-right: 0;
+    margin-left: 5px;
+    padding: 5px;
+    background: radial-gradient(circle at 65% 15%, aqua, darkblue);
+}
