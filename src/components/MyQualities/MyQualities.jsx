@@ -4,8 +4,16 @@ import MyQuality from "./MyQuality/MyQuality";
 
 class MyQualities extends React.Component {
 
+    state = {
+        qualities: [
+            {quality: "Капитан"},
+            {quality: "Джек"},
+            {quality: "Воробей"},
+        ],
+    };
+
     render = () => {
-        let qualities = this.props.qualities.map((quality, index) => {
+        let qualities = this.state.qualities.map((quality, index) => {
             return <MyQuality quality={quality} key={index}/>;
         });
         return (
