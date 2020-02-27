@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Visitors.module.css";
-import CounterVisitors from "./CounterVisitors/CounterVisitors";
 import InputVisitorName from "./InputVisitorName/InputVisitorName";
 import AddVisitor from "./AddVisitor/AddVisitor";
+import AllVisitors from "./AllVisitors/AllVisitors";
 
 class Visitors extends React.Component {
 
@@ -10,6 +10,15 @@ class Visitors extends React.Component {
 
     state = {
         isDisable: true,
+        visitors: [],
+    };
+
+    changeVisitorsState = () => {
+        let newNameVisitor = this.nameVisitorRef.current.value;
+        this.nameVisitorRef.current.value = "";
+        this.setState({
+            visitors: [...this.state.visitors, newNameVisitor]
+        });
     };
 
     switchButtonState = () => {
@@ -27,11 +36,12 @@ class Visitors extends React.Component {
     render = () => {
         return (
             <div className={styles.visitors}>
-                <CounterVisitors/>
                 <InputVisitorName nameVisitorRef={this.nameVisitorRef} isDisable={this.state.isDisable}
                                   switchButtonState={this.switchButtonState}/>
                 <AddVisitor nameVisitorRef={this.nameVisitorRef} isDisable={this.state.isDisable}
-                            switchButtonState={this.switchButtonState} changeDisableState={this.changeDisableState}/>
+                            switchButtonState={this.switchButtonState} changeDisableState={this.changeDisableState}
+                            nameVisitor={this.state.visitors[this.state.visitors.length - 1] ? this.state.visitors[this.state.visitors.length - 1] : ""} changeVisitorsState={this.changeVisitorsState}/>
+                <AllVisitors/>
             </div>
         );
     };

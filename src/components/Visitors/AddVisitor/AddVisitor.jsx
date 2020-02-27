@@ -4,17 +4,9 @@ import HelloVisitor from "./HelloVisitor/HelloVisitor";
 
 class AddVisitor extends React.Component {
 
-    state = {
-        nameVisitor: "",
-    };
-
     addVisitor = () => {
-        let newNameVisitor = this.props.nameVisitorRef.current.value;
-        this.props.nameVisitorRef.current.value = "";
         this.props.changeDisableState();
-        this.setState({
-            nameVisitor: newNameVisitor
-        });
+        this.props.changeVisitorsState();
     };
 
     render = () => {
@@ -23,7 +15,7 @@ class AddVisitor extends React.Component {
                 <button className={styles.addVisitor} onClick={this.addVisitor} disabled={this.props.isDisable}>
                     WAP
                 </button>
-                <HelloVisitor nameVisitor={this.state.nameVisitor}/>
+                <HelloVisitor nameVisitor={this.props.nameVisitor}/>
             </div>
         );
     };
