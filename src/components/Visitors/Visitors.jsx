@@ -41,7 +41,7 @@ class Visitors extends React.Component {
                 <AddVisitor nameVisitorRef={this.nameVisitorRef} isDisable={this.state.isDisable}
                             switchButtonState={this.switchButtonState} changeDisableState={this.changeDisableState}
                             nameVisitor={this.state.visitors[this.state.visitors.length - 1] ? this.state.visitors[this.state.visitors.length - 1] : ""} changeVisitorsState={this.changeVisitorsState}/>
-                <AllVisitors/>
+                <AllVisitors visitors={this.state.visitors}/>
             </div>
         );
     };

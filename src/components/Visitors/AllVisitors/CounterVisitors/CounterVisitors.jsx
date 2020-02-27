@@ -6,7 +6,7 @@ class CounterVisitors extends React.Component {
     render = () => {
         return (
             <div className={styles.counterVisitors}>
-                //todo Logic
+                {this.props.counterVisitors}
             </div>
         );
     }
