@@ -11,7 +11,7 @@ class App extends React.Component {
             {quality: "Капитан"},
             {quality: "Джек"},
             {quality: "Воробей"},
-        ]
+        ],
     };
 
     render = () => {
