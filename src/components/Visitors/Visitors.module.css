@@ -1,7 +1,16 @@
 .visitors {
-    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
     border: 1px solid black;
     margin: 5px;
     padding: 5px;
     background: linear-gradient(to top left, purple, crimson, orangered, gold);
+}
+
+.addVisitor {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
