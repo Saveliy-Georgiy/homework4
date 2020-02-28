@@ -1,9 +1,10 @@
 .myQualities {
-    width: 500px;
+    width: 338px;
     border: 1px solid black;
     margin: 5px;
     padding: 5px;
     display: flex;
     flex-wrap: wrap;
     background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    justify-content: center;
 }
