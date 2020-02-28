@@ -6,7 +6,7 @@ class CounterVisitors extends React.Component {
     render = () => {
         return (
             <div className={styles.counterVisitors}>
-                {this.props.counterVisitors}
+                Количество посетителей: {this.props.counterVisitors}
             </div>
         );
     }
