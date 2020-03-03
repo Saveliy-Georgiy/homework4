@@ -10,7 +10,6 @@ class App extends React.Component {
     render = () => {
         return (
             <div className={styles.App}>
-                <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=0.85; user-scalable=0;" />
                 <div className={styles.mainContainer}>
                 <MyName/>
                 <MyQualities/>
