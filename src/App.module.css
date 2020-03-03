@@ -2,6 +2,7 @@
   height: 100vh;
   display: flex;
 background-image: url("Pictures/background.jpg");
+  background-repeat: repeat-y;
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
@@ -14,5 +15,4 @@ background-image: url("Pictures/background.jpg");
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
-
 }
