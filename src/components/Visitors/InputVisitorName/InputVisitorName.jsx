@@ -11,8 +11,7 @@ class InputVisitorName extends React.Component {
         return (
             <div>
                 <input type="text" placeholder="Имя своё введи" className={styles.inputVisitorName}
-                       ref={this.props.nameVisitorRef} onInput={this.switchInputStatus}
-                />
+                       ref={this.props.nameVisitorRef} onInput={this.switchInputStatus} maxLength="25"/>
             </div>
         );
     };
