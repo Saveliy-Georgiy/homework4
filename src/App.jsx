@@ -1,22 +1,31 @@
 import React from "react";
 import styles from "./App.module.css";
-import MyName from "./components/MyName/MyName";
-import MyQualities from "./components/MyQualities/MyQualities";
-import Visitors from "./components/Visitors/Visitors";
+import Navbar from "./components/Navbar/Navbar";
+import Monday from "./components/Monday/Monday";
+import {HashRouter, Route} from "react-router-dom";
+import Tuesday from "./components/Tuesday/Tuesday";
 
 
 class App extends React.Component {
 
+    state = {
+        dayOfWeek: [
+            {title: "monday", link:"/monday", style: "styles.activeLink"},
+            {title: "tuesday", link:"/tuesday", style: "styles.activeLink"},
+        ],
+    };
+
     render = () => {
         return (
-            <div className={styles.App}>
-                <div className={styles.mainContainer}>
-                <MyName/>
-                <MyQualities/>
-                <Visitors/>
+            <HashRouter>
+                <div className={styles.App}>
+                    <Navbar dayOfWeek={this.state.dayOfWeek}/>
+                    <Route path="/monday"
+                           render={() => <Monday/>}/>
+                    <Route path="/tuesday"
+                           render={() => <Tuesday/>}/>
                 </div>
-            </div>
-        );
+            </HashRouter>);
     };
 }
 
