@@ -2,3 +2,13 @@
  padding: 5px;
 }
 
+.todoList {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.todoList > div {
+ padding: 10px;
+}

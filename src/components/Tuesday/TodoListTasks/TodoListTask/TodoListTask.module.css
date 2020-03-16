@@ -1,0 +1,7 @@
+.todoListTask {
+
+}
+
+.todoListTask.done {
+ opacity: 0.5;
+}
