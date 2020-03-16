@@ -83,6 +83,7 @@ class TodoListHeader extends React.Component {
                             //ref={this.newTaskTitleRef}
                             type="text"
                             placeholder="New task name"
+                            maxLength="25"
                             // onInput={}
                             className={inputClassname}
                             onChange={this.onTitleChanged}
