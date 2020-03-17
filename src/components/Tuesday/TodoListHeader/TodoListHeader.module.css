@@ -1,6 +1,5 @@
 .TodoListHeader {
-
- font-size: 20px;
+    font-size: 20px;
 }
 
 .todoListHeaderTitle {
@@ -10,20 +9,17 @@
 .todoListNewTaskForm {
 
 }
+
 .todoList > div {
- padding: 10px;
+    padding: 10px;
 }
 
 .todoListTask {
 
 }
 
-
-
-
-
 .error {
- border-color: red;
+    border-color: red;
 }
 
 /*

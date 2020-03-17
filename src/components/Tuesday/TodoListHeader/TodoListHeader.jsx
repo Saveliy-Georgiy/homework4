@@ -12,7 +12,7 @@ class TodoListHeader extends React.Component {
     };
 
     switchButtonStatus = () => {
-        if(this.state.title === ""){
+        if (this.state.title === "") {
             this.setState(
                 {
                     isDisabled: true,
@@ -83,7 +83,6 @@ class TodoListHeader extends React.Component {
                             //ref={this.newTaskTitleRef}
                             type="text"
                             placeholder="New task name"
-                            maxLength="25"
                             // onInput={}
                             className={inputClassname}
                             onChange={this.onTitleChanged}
