@@ -51,8 +51,6 @@ class TodoListTask extends React.Component {
                         {this.props.task.id}-{this.props.task.title}-priority:
                     </span>
                 }
-                <span>{this.props.task.id}-{this.props.task.title}-priority:</span>
-                <span>{this.props.task.priority}</span>
                 <button onClick={this.deleteThisTask}>X</button>
             </div>
         );
