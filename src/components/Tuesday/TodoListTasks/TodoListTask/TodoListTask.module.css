@@ -1,7 +1,11 @@
 .todoListTask {
-
+width: 320px;
 }
 
 .todoListTask.done {
  opacity: 0.5;
+}
+
+.wordWrap {
+ overflow-wrap: break-word;
 }

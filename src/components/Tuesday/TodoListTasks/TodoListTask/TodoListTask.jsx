@@ -40,14 +40,14 @@ class TodoListTask extends React.Component {
                 {this.state.editMode
                     ? <input
                         type="text"
-                        maxLength="25"
                         value={this.props.task.title}
                         autoFocus={true}
                         onBlur={this.deactivateEditMode}
                         onChange={this.onTitleChanged}
                     />
                     :
-                    <span onClick={this.activateEditMode}>
+                    <span className={styles.wordWrap}
+                          onClick={this.activateEditMode}>
                         {this.props.task.id}-{this.props.task.title}-priority:
                     </span>
                 }
