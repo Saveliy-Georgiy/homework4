@@ -1,11 +1,12 @@
 .todoListTask {
-width: 320px;
+    margin-left: 120px;
+    width: 320px;
 }
 
 .todoListTask.done {
- opacity: 0.5;
+    opacity: 0.5;
 }
 
 .wordWrap {
- overflow-wrap: break-word;
+    overflow-wrap: break-word;
 }
