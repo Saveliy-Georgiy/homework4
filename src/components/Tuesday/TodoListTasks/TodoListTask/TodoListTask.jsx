@@ -3,6 +3,10 @@ import styles from "./TodoListTask.module.css";
 
 class TodoListTask extends React.Component {
 
+    state = {
+        editMode: false,
+    };
+
     onIsDoneChanged = (e) => {
         this.props.changeStatus(this.props.task.id, e.currentTarget.checked);
     };
@@ -15,16 +19,16 @@ class TodoListTask extends React.Component {
         this.props.deleteTask(this.props.task.id);
     };
 
-    state = {
-        editMode: false,
-    };
-
     activateEditMode = () => {
         this.setState({editMode: true});
     };
 
     deactivateEditMode = () => {
         this.setState({editMode: false});
+    };
+
+    onPriorityChanged = (e) => {
+        this.props.changePriority(this.props.task.id, e.currentTarget.value);
     };
 
     render = () => {
@@ -36,7 +40,8 @@ class TodoListTask extends React.Component {
                 <input
                     type="checkbox"
                     checked={this.props.task.isDone}
-                    onChange={this.onIsDoneChanged}/>
+                    onChange={this.onIsDoneChanged}
+                />
                 {this.state.editMode
                     ? <input
                         type="text"
@@ -46,12 +51,24 @@ class TodoListTask extends React.Component {
                         onChange={this.onTitleChanged}
                     />
                     :
-                    <span className={styles.wordWrap}
+                    <div className={styles.wordWrap}
                           onClick={this.activateEditMode}>
                         {this.props.task.id}-{this.props.task.title}-priority:
-                    </span>
+                    </div>
                 }
-                <button onClick={this.deleteThisTask}>X</button>
+                    <div>
+                    <select
+                        className={styles.selector}
+                        value={this.props.task.priority}
+                        onChange={this.onPriorityChanged}>
+                    <option>high</option>
+                    <option>medium</option>
+                    <option>low</option>
+                    </select>
+                    </div>
+                <button
+                    className={styles.deleteButton}
+                    onClick={this.deleteThisTask}>X</button>
             </div>
         );
     };

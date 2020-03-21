@@ -1,4 +1,6 @@
 .todoListTask {
+    display: flex;
+    flex-direction: row;
     margin-left: 120px;
     width: 320px;
 }
@@ -9,4 +11,14 @@
 
 .wordWrap {
     overflow-wrap: break-word;
+}
+
+.selector {
+    font-size: 15px;
+    margin: 5px;
+}
+
+.deleteButton {
+    margin: 5px 5px 5px 0;
+
 }

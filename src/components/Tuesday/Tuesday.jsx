@@ -74,6 +74,12 @@ class Tuesday extends React.Component {
         this.changeTask(taskId, {title: title});
     };
 
+    changePriority = (taskId, selector) => {
+        this.changeTask(taskId, {priority: selector});
+    };
+
+
+
     deleteTask = (removedId) => {
         let newTasks = this.state.tasks.filter(t => t.id !== removedId);
         this.setState({
@@ -95,6 +101,7 @@ class Tuesday extends React.Component {
                         changeStatus={this.changeStatus}
                         changeTitle={this.changeTitle}
                         deleteTask={this.deleteTask}
+                        changePriority={this.changePriority}
                         tasks={this.state.tasks.filter(t => {
                                 switch (this.state.filterValue) {
                                     case "Active":
