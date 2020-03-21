@@ -33,8 +33,8 @@ class App extends React.Component {
     render = () => {
         if (this.state.loading) {
         return (
-            <div className={styles.App}>
-            <Loading/>
+            <div className={styles.loadingContainer}>
+                <Loading/>
             </div>
             );
         } else {
