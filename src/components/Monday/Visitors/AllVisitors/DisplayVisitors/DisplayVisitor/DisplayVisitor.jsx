@@ -6,7 +6,7 @@ class DisplayVisitor extends React.Component {
     render = () => {
         return (
             <div className={styles.displayVisitor}>
-                {this.props.visitor}
+                {this.props.visitor.title}
             </div>
         );
     };

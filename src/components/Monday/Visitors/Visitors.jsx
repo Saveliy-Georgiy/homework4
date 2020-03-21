@@ -10,23 +10,36 @@ class Visitors extends React.Component {
     state = {
         isDisable: true,
         visitors: [],
+      /*  visitor: {/!*title:"", timeAdded: ""*!/},*/
         error: false,
-        title: "",
+        title:"",
+    };
+
+    zeroFirstFormat = (value) => {
+        if (value < 10) {
+            value = "0" + value;
+        }
+        return value;
+    };
+
+    time = () => {
+        let date = new Date();
+        return `${this.zeroFirstFormat(date.getHours())}:${this.zeroFirstFormat(date.getMinutes())}`
     };
 
     changeVisitorsState = () => {
-        let newNameVisitor = this.state.title;
-        if(newNameVisitor!=="") {
-        this.setState({
-            visitors: [...this.state.visitors, newNameVisitor],
-            title: "",
-        });
+        let newVisitor = this.state.visitor;
+        if (newVisitor.title !== "") {
+            this.setState({
+                visitors: [...this.state.visitors, newVisitor.title],
+                visitor: {title: "", timeAdded: this.time},
+            });
         }
     };
 
     /*switchButtonState = () => {
         this.setState({
-            isDisable: this.state.title === ""
+            isDisable: this.state.visitor.title === ""
         });
     };*/
 
@@ -39,7 +52,7 @@ class Visitors extends React.Component {
     //вместо switchButtonState и changeDisableState - errorHighlighting
 
     errorHighlighting = () => {
-        if (this.state.title === "") {
+        if (this.state.visitor.title === "") {
             this.setState({
                 error: true
             });
@@ -53,6 +66,7 @@ class Visitors extends React.Component {
     onTitleChanged = (e) => {
         this.setState(
             {
+                //visitor: {title: e.currentTarget.value, timeAdded: this.state.timeAdded}
                 title: e.currentTarget.value,
             });
     };
@@ -60,34 +74,50 @@ class Visitors extends React.Component {
     onAddTaskKeyPress = (e) => {
         if (e.key === "Enter") {
             //this.changeDisableState();
-            this.changeVisitorsState();
-            this.errorHighlighting();
+           /* this.changeVisitorsState();
+            this.errorHighlighting();*/
+            this.setState(
+                {
+                    //visitor: {title: e.currentTarget.value, timeAdded: this.state.timeAdded}
+                    title: e.currentTarget.value,
+                });
         }
     };
 
     addVisitor = () => {
         //this.changeDisableState();
-        this.changeVisitorsState();
-        this.errorHighlighting();
+        /*this.changeVisitorsState();
+        this.errorHighlighting();*/
+        let newVisitor = {title:this.state.title, timeAdded: this.time()};
+        debugger;
+        this.setState(
+            {
+                //visitor: {title: e.currentTarget.value, timeAdded: this.state.timeAdded}
+           visitors: [...this.state.visitors, newVisitor],
+                title: "",
+            });
     };
 
     render = () => {
         return (
             <div className={styles.visitors}>
                 <div className={styles.addVisitor}>
-                    <InputVisitorName title={this.state.title}
-                                      //switchButtonState={this.switchButtonState}
-                                      onAddTaskKeyPress={this.onAddTaskKeyPress}
-                                      error={this.state.error}
-                                      onTitleChanged={this.onTitleChanged}/>
-                    <AddVisitor nameVisitorRef={this.state.title}
-                                addVisitor={this.addVisitor}
-                                nameVisitor={this.state.visitors[this.state.visitors.length - 1] ?
-                                    this.state.visitors[this.state.visitors.length - 1] : ""}
-                                />
+                    <InputVisitorName
+                        title={this.state.title}
+                        //switchButtonState={this.switchButtonState}
+                        onAddTaskKeyPress={this.onAddTaskKeyPress}
+                        error={this.state.error}
+                        onTitleChanged={this.onTitleChanged}/>
+                    <AddVisitor
+                        nameVisitorRef={this.state.title}
+                        addVisitor={this.addVisitor}
+                        nameVisitor={this.state.visitors[this.state.visitors.length - 1] ?
+                            this.state.visitors[this.state.visitors.length - 1] : ""}
+                    />
                 </div>
                 <HelloVisitor
-                    nameVisitor={this.state.visitors[this.state.visitors.length - 1] ? this.state.visitors[this.state.visitors.length - 1] : ""}/>
+                    timeAdded={this.state.visitors[this.state.visitors.length - 1] ? this.state.visitors[this.state.visitors.length - 1].timeAdded: ""}
+                    nameVisitor={this.state.visitors[this.state.visitors.length - 1] ? this.state.visitors[this.state.visitors.length - 1].title: ""}/>
                 <AllVisitors visitors={this.state.visitors}/>
             </div>
         );
