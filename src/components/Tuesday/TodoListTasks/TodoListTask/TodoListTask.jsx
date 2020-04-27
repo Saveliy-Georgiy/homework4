@@ -61,14 +61,16 @@ class TodoListTask extends React.Component {
                         className={styles.selector}
                         value={this.props.task.priority}
                         onChange={this.onPriorityChanged}>
-                    <option>high</option>
-                    <option>medium</option>
-                    <option>low</option>
+                        <option>high</option>
+                        <option>medium</option>
+                        <option>low</option>
                     </select>
                     </div>
                 <button
                     className={styles.deleteButton}
-                    onClick={this.deleteThisTask}>X</button>
+                    onMouseDown={this.deleteThisTask}>
+                    X
+                </button>
             </div>
         );
     };

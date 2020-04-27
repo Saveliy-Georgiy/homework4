@@ -78,8 +78,6 @@ class Tuesday extends React.Component {
         this.changeTask(taskId, {priority: selector});
     };
 
-
-
     deleteTask = (removedId) => {
         let newTasks = this.state.tasks.filter(t => t.id !== removedId);
         this.setState({

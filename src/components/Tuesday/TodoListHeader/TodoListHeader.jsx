@@ -73,12 +73,11 @@ class TodoListHeader extends React.Component {
 
     render = () => {
         // const {error} = this.state;
-        const inputClassname = this.state.error ? styles.error : "";
+        const inputClassname = this.state.error ? styles.error : styles.inputText;
         return (
             <div className={styles.TodoListHeader}>
                 <h3 className={styles.todoListHeaderTitle}>What to Learn</h3>
                 <div className={styles.todoListNewTaskForm}>
-                    <div>
                         <input
                             //ref={this.newTaskTitleRef}
                             type="text"
@@ -89,10 +88,10 @@ class TodoListHeader extends React.Component {
                             onKeyPress={this.onAddTaskKeyPress}
                             value={this.state.title}
                         />
-                    </div>
                     <button
                         onClick={this.onAddTaskClick}
-                        disabled={this.state.isDisabled}>
+                        disabled={this.state.isDisabled}
+                    >
                         Add
                     </button>
                 </div>
