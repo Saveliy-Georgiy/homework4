@@ -21,6 +21,20 @@ class Tuesday extends React.Component {
         ],
         filterValue: "All",
         nextTaskId: 0,
+
+    };
+
+    zeroFirstFormat = (value) => {
+        if (value < 10) {
+            value = "0" + value;
+        }
+        return value;
+    };
+
+    time = () => {
+        let date = new Date();
+        let month = date.toLocaleString("en-US", {month: "long"}); // Декабрь 2014
+        return `${(date.getDate())} ${(month)} ${(date.getFullYear())}, ${(date.getHours())}:${(date.getMinutes())}`;
     };
 
     addTask = (newText) => {
@@ -30,6 +44,9 @@ class Tuesday extends React.Component {
             title: newText,
             isDone: false,
             priority: "high",
+            timeAdded: this.time(),
+            timeUpdated: "обновлений не было",
+            timeFinished: "еще не закончено"
         };
 
         //let newTasks = this.state.tasks.push(newTask);
@@ -39,7 +56,6 @@ class Tuesday extends React.Component {
         }, () => {
             saveState("our-state", this.state);
         });
-
     };
 
     changeFilter = (newFilterValue) => {
@@ -53,6 +69,7 @@ class Tuesday extends React.Component {
     changeTask = (taskId, obj) => {
         let newTasks = this.state.tasks.map(t => {
             if (t.id === taskId) {
+                t.timeUpdated = this.time();
                 return {...t, ...obj};
             } else {
                 return t;
@@ -60,13 +77,18 @@ class Tuesday extends React.Component {
         });
 
         this.setState({
-            tasks: newTasks
+            tasks: newTasks,
         }, () => {
             saveState("our-state", this.state);
         });
     };
 
-    changeStatus = (taskId, isDone) => {
+    changeStatus = (taskId, isDone, task) => {
+        if (task.isDone !== true) {
+            task.timeFinished = this.time();
+        } else {
+            task.timeFinished = "еще не закончено";
+        }
         this.changeTask(taskId, {isDone: isDone});
     };
 

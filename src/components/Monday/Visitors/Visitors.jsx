@@ -89,7 +89,6 @@ class Visitors extends React.Component {
         /*this.changeVisitorsState();
         this.errorHighlighting();*/
         let newVisitor = {title:this.state.title, timeAdded: this.time()};
-        debugger;
         this.setState(
             {
                 //visitor: {title: e.currentTarget.value, timeAdded: this.state.timeAdded}

@@ -1,13 +1,18 @@
 .todoListTask {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     width: 320px;
 }
 
 .todoListTask.done {
     opacity: 0.5;
+}
+
+.taskWrap {
+    display: flex;
+    flex-direction: row;
 }
 
 .wordWrap {
