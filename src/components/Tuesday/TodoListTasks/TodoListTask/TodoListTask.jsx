@@ -5,6 +5,7 @@ class TodoListTask extends React.Component {
 
     state = {
         editMode: false,
+        timeBlock: false,
     };
 
     onIsDoneChanged = (e) => {
@@ -24,7 +25,15 @@ class TodoListTask extends React.Component {
     };
 
     deactivateEditMode = () => {
-        this.setState({editMode: false});
+        this.setState({editMode: false, timeBlock: false});
+    };
+
+    showBlockTime = () => {
+        this.setState({timeBlock: true});
+    };
+
+    hideBlockTime = () => {
+        this.setState({timeBlock: false});
     };
 
     onPriorityChanged = (e) => {
@@ -34,6 +43,7 @@ class TodoListTask extends React.Component {
     render = () => {
 
         const todoListTask = this.props.task.isDone === true ? styles.done : "";
+        let blockTime = this.state.timeBlock === true ? styles.taskTime : styles.displayBlockNone;
 
         return (
             <div className={styles.todoListTask + " " + todoListTask}>
@@ -53,7 +63,10 @@ class TodoListTask extends React.Component {
                         />
                         :
                         <div className={styles.wordWrap}
-                             onClick={this.activateEditMode}>
+                             onMouseOver={this.showBlockTime}
+                             onMouseOut={this.hideBlockTime}
+                             onClick={this.activateEditMode}
+                        >
                             {this.props.task.id}-{this.props.task.title}-priority:
                         </div>
                     }
@@ -73,7 +86,7 @@ class TodoListTask extends React.Component {
                         X
                     </button>
                 </div>
-                <div>
+                <div className={blockTime}>
                     <div>created:
                         {this.props.task.timeAdded}
                     </div>
